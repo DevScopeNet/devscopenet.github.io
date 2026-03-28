@@ -33,13 +33,7 @@ const blogPosts = [
         date: "22 Mart 2025",
         readTime: "10 dk",
         gradient: "linear-gradient(135deg, #ec4899, #f43f5e)"
-    }
-
-        {
-        id: 3,
-        title: "Flutter vs React Native 2025",
-        ...
-    },  // ← Virgül ekle
+    },
     {
         id: 4,
         title: "YENİ BAŞLIK",
@@ -49,7 +43,7 @@ const blogPosts = [
         date: "29 Mart 2025",
         readTime: "5 dk",
         gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)"
-    }   // ← Burada virgül YOK
+    },   // ← Burada virgül YOK
     // YENİ YAZI EKLEMEK İÇİN:
     // 1. Buraya virgül koyun
     // 2. Yeni obje yapıştırın
