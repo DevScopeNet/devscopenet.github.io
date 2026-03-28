@@ -6,17 +6,14 @@
     <title>DevScope | Yazılım & Teknoloji</title>
     <meta name="description" content="Yazılım dünyasından güncel haberler ve AI araçları rehberi">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* [CSS aynı kalıyor - önceki kod] */
-        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--bg:#ffffff;--bg-secondary:#f8fafc;--bg-card:#ffffff;--text:#0f172a;--text-secondary:#64748b;--border:#e2e8f0;--shadow:0 4px 6px -1px rgb(0 0 0 / 0.1);--shadow-lg:0 20px 25px -5px rgb(0 0 0 / 0.1);--radius:12px}
-        [data-theme="dark"]{--bg:#0f172a;--bg-secondary:#1e293b;--bg-card:#1e293b;--text:#f8fafc;--text-secondary:#94a3b8;--border:#334155;--shadow:0 4px 6px -1px rgb(0 0 0 / 0.3)}
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--bg:#ffffff;--bg-secondary:#f8fafc;--bg-card:#ffffff;--text:#0f172a;--text-secondary:#64748b;--border:#e2e8f0;--radius:12px;--shadow:0 4px 6px -1px rgb(0 0 0 / 0.1);--shadow-lg:0 20px 25px -5px rgb(0 0 0 / 0.1)}
+        [data-theme="dark"]{--bg:#0f172a;--bg-secondary:#1e293b;--bg-card:#1e293b;--text:#f8fafc;--text-secondary:#94a3b8;--border:#334155}
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:all 0.3s ease}
-        .progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--secondary));z-index:9999;width:0%}
         nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:1000}
         [data-theme="dark"] nav{background:rgba(15,23,42,0.9)}
         .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
@@ -27,11 +24,9 @@
         .nav-actions{display:flex;gap:1rem;align-items:center}
         .btn{padding:0.5rem 1rem;border-radius:8px;border:none;cursor:pointer;font-weight:500;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
         .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(99,102,241,0.3)}
         .btn-secondary{background:var(--bg-secondary);color:var(--text);border:1px solid var(--border)}
         .theme-toggle{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg-card);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
         .theme-toggle:hover{transform:rotate(180deg);background:var(--primary);color:white}
-        .mobile-menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
         .hero{margin-top:80px;padding:4rem 2rem;max-width:1200px;margin-left:auto;margin-right:auto}
         .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
         .hero-content h1{font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--text) 0%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -43,11 +38,8 @@
         .status-highlight{color:var(--primary);font-weight:600;display:block;margin-top:0.5rem}
         .code-window{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden}
         .window-header{background:var(--bg-secondary);padding:0.75rem 1rem;display:flex;gap:0.5rem;border-bottom:1px solid var(--border)}
-        .dot{width:12px;height:12px;border-radius:50%}
-        .dot-red{background:#ef4444}.dot-yellow{background:#eab308}.dot-green{background:#22c55e}
-        .code-content{padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;line-height:1.6}
-        .code-line{display:flex;gap:1rem}
-        .line-number{color:var(--text-secondary)}
+        .dot{width:12px;height:12px;border-radius:50%}.dot-red{background:#ef4444}.dot-yellow{background:#eab308}.dot-green{background:#22c55e}
+        .code-content{padding:1.5rem;font-family:monospace;font-size:0.9rem;line-height:1.6}
         .code-keyword{color:var(--primary)}.code-string{color:var(--secondary)}
         .search-section{max-width:800px;margin:0 auto 3rem;padding:0 2rem}
         .search-box{position:relative}
@@ -71,11 +63,11 @@
         .card-title{font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;line-height:1.4}
         .card-excerpt{color:var(--text-secondary);font-size:0.95rem;margin-bottom:1rem}
         .card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);font-size:0.875rem;color:var(--text-secondary)}
-        .newsletter{max-width:800px;margin:4rem auto;padding:3rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:var(--radius);text-align:center;color:white;position:relative;overflow:hidden}
-        .newsletter h2{font-size:2rem;margin-bottom:1rem;position:relative}
-        .newsletter p{opacity:0.9;margin-bottom:2rem;position:relative}
+        .newsletter{max-width:800px;margin:4rem auto;padding:3rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:var(--radius);text-align:center;color:white}
+        .newsletter h2{font-size:2rem;margin-bottom:1rem}
+        .newsletter p{opacity:0.9;margin-bottom:2rem}
         .subscriber-count{background:rgba(255,255,255,0.2);padding:0.5rem 1rem;border-radius:50px;display:inline-block;margin-bottom:1.5rem;font-size:0.875rem}
-        .newsletter-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;position:relative}
+        .newsletter-form{display:flex;gap:1rem;max-width:500px;margin:0 auto}
         .newsletter-input{flex:1;padding:1rem 1.5rem;border:none;border-radius:8px;font-size:1rem}
         .newsletter-btn{padding:1rem 2rem;background:var(--text);color:var(--bg);border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.3s}
         .newsletter-btn:hover{transform:translateY(-2px)}
@@ -93,12 +85,10 @@
         .footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:0.875rem}
         .toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg-card);border:1px solid var(--border);padding:1rem 1.5rem;border-radius:var(--radius);box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:0.75rem;transform:translateX(400px);transition:transform 0.3s;z-index:9999}
         .toast.show{transform:translateX(0)}
-        @media(max-width:768px){.nav-links{display:none}.mobile-menu-btn{display:block}.hero-grid{grid-template-columns:1fr;gap:2rem}.hero-content h1{font-size:2.5rem}.blog-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr}.newsletter-form{flex-direction:column}}
+        @media(max-width:768px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr;gap:2rem}.hero-content h1{font-size:2.5rem}.blog-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr}.newsletter-form{flex-direction:column}}
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-
     <nav>
         <div class="nav-container">
             <a href="#" class="logo"><i class="fas fa-code"></i>DevScope</a>
@@ -110,7 +100,6 @@
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
                 <a href="https://t.me/devscopenet" class="btn btn-primary" target="_blank"><i class="fab fa-telegram"></i></a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
@@ -133,11 +122,10 @@
                 <div class="code-window">
                     <div class="window-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
                     <div class="code-content">
-                        <div class="code-line"><span class="line-number">1</span><span><span class="code-keyword">const</span>devScope={</span></div>
-                        <div class="code-line"><span class="line-number">2</span><span>&nbsp;&nbsp;mission:<span class="code-string">'AI & Yazılım'</span>,</span></div>
-                        <div class="code-line"><span class="line-number">3</span><span>&nbsp;&nbsp;content:[<span class="code-string">'News'</span>,<span class="code-string">'Tutorials'</span>],</span></div>
-                        <div class="code-line"><span class="line-number">4</span><span>&nbsp;&nbsp;telegram:<span class="code-string">'@devscopenet'</span></span></div>
-                        <div class="code-line"><span class="line-number">5</span><span>}</span></div>
+                        <div><span style="color:var(--text-secondary)">1</span> <span class="code-keyword">const</span> devScope = {</div>
+                        <div><span style="color:var(--text-secondary)">2</span> &nbsp;&nbsp;mission: <span class="code-string">'AI & Yazılım'</span>,</div>
+                        <div><span style="color:var(--text-secondary)">3</span> &nbsp;&nbsp;telegram: <span class="code-string">'@devscopenet'</span></div>
+                        <div><span style="color:var(--text-secondary)">4</span> }</div>
                     </div>
                 </div>
             </div>
@@ -180,7 +168,7 @@
                 <div class="social-links">
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="https://t.me/devscopenet"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
             <div class="footer-links"><h4>İçerik</h4><ul><li><a href="#">Yazılar</a></li><li><a href="#">AI Araçları</a></li><li><a href="#">Eğitimler</a></li></ul></div>
@@ -199,55 +187,45 @@
     <script>
         // blogPosts posts.js'den geliyor!
 
-        const metrics = {
-            subscribers: parseInt(localStorage.getItem('devscope_subscribers')) || 0,
-            getSubscriberText() {
-                const count = this.subscribers;
-                if (count === 0) return "👋 İlk abonemiz siz olun!";
-                if (count < 10) return `🎉 ${count} abone - Büyüyoruz!`;
-                return `⭐ ${count}+ abone topluluğu`;
-            },
-            addSubscriber() {
-                this.subscribers++;
-                localStorage.setItem('devscope_subscribers', this.subscribers);
-                return this.subscribers;
-            }
-        };
-
         const themeToggle = document.getElementById('themeToggle');
         const searchInput = document.getElementById('searchInput');
         const blogGrid = document.getElementById('blogGrid');
         const filterTags = document.getElementById('filterTags');
-        const progressBar = document.getElementById('progressBar');
         const toast = document.getElementById('toast');
         const newsletterForm = document.getElementById('newsletterForm');
         const subscriberCount = document.getElementById('subscriberCount');
 
+        // Theme
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
-        updateThemeIcon(currentTheme);
+        themeToggle.querySelector('i').className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
 
         themeToggle.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme');
             const next = current === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
-            updateThemeIcon(next);
+            themeToggle.querySelector('i').className = next === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         });
 
-        function updateThemeIcon(theme) {
-            themeToggle.querySelector('i').className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-        }
-
+        // Render posts with LINKS
         function renderPosts(posts) {
             blogGrid.innerHTML = posts.map(post => `
-                <a href="#" class="blog-card" data-category="${post.category}">
-                    <div class="card-image" style="background:${post.gradient}"><span class="card-category">${post.categoryLabel}</span></div>
+                <a href="${post.url}" class="blog-card" data-category="${post.category}">
+                    <div class="card-image" style="background:${post.gradient}">
+                        <span class="card-category">${post.categoryLabel}</span>
+                    </div>
                     <div class="card-content">
-                        <div class="card-meta"><span><i class="far fa-calendar"></i>${post.date}</span><span><i class="far fa-clock"></i>${post.readTime}</span></div>
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar"></i> ${post.date}</span>
+                            <span><i class="far fa-clock"></i> ${post.readTime}</span>
+                        </div>
                         <h3 class="card-title">${post.title}</h3>
                         <p class="card-excerpt">${post.excerpt}</p>
-                        <div class="card-footer"><span>Okuma süresi: ${post.readTime}</span><span style="color:var(--primary);font-weight:500">Devamını Oku →</span></div>
+                        <div class="card-footer">
+                            <span>${post.readTime} okuma</span>
+                            <span style="color:var(--primary);font-weight:500">Devamını Oku →</span>
+                        </div>
                     </div>
                 </a>
             `).join('');
@@ -255,6 +233,7 @@
 
         renderPosts(blogPosts);
 
+        // Filter
         filterTags.addEventListener('click', (e) => {
             if (e.target.classList.contains('tag')) {
                 document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
@@ -265,33 +244,41 @@
             }
         });
 
+        // Search
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
             const filtered = blogPosts.filter(p => p.title.toLowerCase().includes(term) || p.excerpt.toLowerCase().includes(term));
             renderPosts(filtered);
         });
 
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            progressBar.style.width = (scrolled * 100) + '%';
-        });
+        // Newsletter
+        const metrics = {
+            subscribers: parseInt(localStorage.getItem('devscope_subscribers')) || 0,
+            getText() {
+                if (this.subscribers === 0) return "👋 İlk abonemiz siz olun!";
+                if (this.subscribers < 10) return `🎉 ${this.subscribers} abone`;
+                return `⭐ ${Math.floor(this.subscribers/10)*10}+ abone`;
+            },
+            add() {
+                this.subscribers++;
+                localStorage.setItem('devscope_subscribers', this.subscribers);
+                return this.subscribers;
+            }
+        };
 
-        subscriberCount.textContent = metrics.getSubscriberText();
+        subscriberCount.textContent = metrics.getText();
 
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const newCount = metrics.addSubscriber();
-            showToast(newCount === 1 ? '🎉 Tebrikler! İlk abonemiz oldunuz!' : `🎉 ${newCount}. abonemiz oldunuz!`);
-            subscriberCount.textContent = metrics.getSubscriberText();
+            const count = metrics.add();
+            document.getElementById('toastMessage').textContent = count === 1 ? '🎉 İlk abonemiz oldunuz!' : `🎉 ${count}. abonemiz oldunuz!`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+            subscriberCount.textContent = metrics.getText();
             e.target.reset();
         });
 
-        function showToast(msg) {
-            document.getElementById('toastMessage').textContent = msg;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', (e) => {
                 e.preventDefault();
