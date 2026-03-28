@@ -6,752 +6,148 @@
     <title>DevScope | Yazılım & Teknoloji</title>
     <meta name="description" content="Yazılım dünyasından güncel haberler ve AI araçları rehberi">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --bg: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-card: #ffffff;
-            --text: #0f172a;
-            --text-secondary: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            --radius: 12px;
-        }
-
-        [data-theme="dark"] {
-            --bg: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --text: #f8fafc;
-            --text-secondary: #94a3b8;
-            --border: #334155;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            z-index: 9999;
-            width: 0%;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        [data-theme="dark"] nav {
-            background: rgba(15, 23, 42, 0.9);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .theme-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            color: var(--text);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .theme-toggle:hover {
-            transform: rotate(180deg);
-            background: var(--primary);
-            color: white;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero */
-        .hero {
-            margin-top: 80px;
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* YENİ: Gerçekçi başlangıç mesajı */
-        .hero-status {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            max-width: 500px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .status-text {
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .status-highlight {
-            color: var(--primary);
-            font-weight: 600;
-            display: block;
-            margin-top: 0.5rem;
-        }
-
-        /* Code Window */
-        .code-window {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-        }
-
-        .window-header {
-            background: var(--bg-secondary);
-            padding: 0.75rem 1rem;
-            display: flex;
-            gap: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .dot-red { background: #ef4444; }
-        .dot-yellow { background: #eab308; }
-        .dot-green { background: #22c55e; }
-
-        .code-content {
-            padding: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .code-line {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .line-number {
-            color: var(--text-secondary);
-        }
-
-        .code-keyword { color: var(--primary); }
-        .code-string { color: var(--secondary); }
-
-        /* Search */
-        .search-section {
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            padding: 0 2rem;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem 1rem 3rem;
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--bg-card);
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-        }
-
-        /* Filters */
-        .filter-section {
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            padding: 0 2rem;
-        }
-
-        .filter-tags {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .tag:hover, .tag.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* Blog Grid */
-        .blog-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 200px;
-            position: relative;
-        }
-
-        .card-category {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .card-excerpt {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 3rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: var(--radius);
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .newsletter h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .newsletter p {
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .subscriber-count {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            font-size: 0.875rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            background: var(--text);
-            color: var(--bg);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem 1rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .footer-brand p {
-            color: var(--text-secondary);
-            margin-top: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .footer-links h4 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transform: translateX(400px);
-            transition: transform 0.3s;
-            z-index: 9999;
-        }
-
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
+        /* [CSS aynı kalıyor - önceki kod] */
+        :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#ec4899;--bg:#ffffff;--bg-secondary:#f8fafc;--bg-card:#ffffff;--text:#0f172a;--text-secondary:#64748b;--border:#e2e8f0;--shadow:0 4px 6px -1px rgb(0 0 0 / 0.1);--shadow-lg:0 20px 25px -5px rgb(0 0 0 / 0.1);--radius:12px}
+        [data-theme="dark"]{--bg:#0f172a;--bg-secondary:#1e293b;--bg-card:#1e293b;--text:#f8fafc;--text-secondary:#94a3b8;--border:#334155;--shadow:0 4px 6px -1px rgb(0 0 0 / 0.3)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:all 0.3s ease}
+        .progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--secondary));z-index:9999;width:0%}
+        nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:1000}
+        [data-theme="dark"] nav{background:rgba(15,23,42,0.9)}
+        .nav-container{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+        .nav-links{display:flex;gap:2rem;align-items:center}
+        .nav-links a{text-decoration:none;color:var(--text-secondary);font-weight:500;transition:color 0.3s}
+        .nav-links a:hover{color:var(--primary)}
+        .nav-actions{display:flex;gap:1rem;align-items:center}
+        .btn{padding:0.5rem 1rem;border-radius:8px;border:none;cursor:pointer;font-weight:500;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none}
+        .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(99,102,241,0.3)}
+        .btn-secondary{background:var(--bg-secondary);color:var(--text);border:1px solid var(--border)}
+        .theme-toggle{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--bg-card);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+        .theme-toggle:hover{transform:rotate(180deg);background:var(--primary);color:white}
+        .mobile-menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+        .hero{margin-top:80px;padding:4rem 2rem;max-width:1200px;margin-left:auto;margin-right:auto}
+        .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+        .hero-content h1{font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--text) 0%,var(--primary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-content p{font-size:1.25rem;color:var(--text-secondary);margin-bottom:2rem}
+        .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+        .hero-status{margin-top:2rem;padding:1.5rem;background:var(--bg-secondary);border-left:4px solid var(--primary);border-radius:8px;max-width:500px}
+        .status-badge{display:inline-block;background:var(--primary);color:white;padding:0.25rem 0.75rem;border-radius:50px;font-size:0.875rem;font-weight:600;margin-bottom:0.75rem}
+        .status-text{color:var(--text-secondary);margin:0;line-height:1.6}
+        .status-highlight{color:var(--primary);font-weight:600;display:block;margin-top:0.5rem}
+        .code-window{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden}
+        .window-header{background:var(--bg-secondary);padding:0.75rem 1rem;display:flex;gap:0.5rem;border-bottom:1px solid var(--border)}
+        .dot{width:12px;height:12px;border-radius:50%}
+        .dot-red{background:#ef4444}.dot-yellow{background:#eab308}.dot-green{background:#22c55e}
+        .code-content{padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;line-height:1.6}
+        .code-line{display:flex;gap:1rem}
+        .line-number{color:var(--text-secondary)}
+        .code-keyword{color:var(--primary)}.code-string{color:var(--secondary)}
+        .search-section{max-width:800px;margin:0 auto 3rem;padding:0 2rem}
+        .search-box{position:relative}
+        .search-input{width:100%;padding:1rem 1.5rem 1rem 3rem;border:2px solid var(--border);border-radius:var(--radius);background:var(--bg-card);color:var(--text);font-size:1rem}
+        .search-input:focus{outline:none;border-color:var(--primary)}
+        .search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-secondary)}
+        .filter-section{max-width:1200px;margin:0 auto 2rem;padding:0 2rem}
+        .filter-tags{display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center}
+        .tag{padding:0.5rem 1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:50px;cursor:pointer;transition:all 0.3s;font-size:0.875rem;font-weight:500}
+        .tag:hover,.tag.active{background:var(--primary);color:white;border-color:var(--primary)}
+        .blog-section{max-width:1200px;margin:0 auto;padding:2rem}
+        .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+        .section-title{font-size:2rem;font-weight:700}
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:2rem}
+        .blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.3s;text-decoration:none;color:inherit;display:block}
+        .blog-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+        .card-image{width:100%;height:200px;position:relative}
+        .card-category{position:absolute;top:1rem;left:1rem;background:rgba(255,255,255,0.9);color:var(--primary);padding:0.25rem 0.75rem;border-radius:50px;font-size:0.75rem;font-weight:600}
+        .card-content{padding:1.5rem}
+        .card-meta{display:flex;gap:1rem;margin-bottom:0.75rem;font-size:0.875rem;color:var(--text-secondary)}
+        .card-title{font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;line-height:1.4}
+        .card-excerpt{color:var(--text-secondary);font-size:0.95rem;margin-bottom:1rem}
+        .card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);font-size:0.875rem;color:var(--text-secondary)}
+        .newsletter{max-width:800px;margin:4rem auto;padding:3rem;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:var(--radius);text-align:center;color:white;position:relative;overflow:hidden}
+        .newsletter h2{font-size:2rem;margin-bottom:1rem;position:relative}
+        .newsletter p{opacity:0.9;margin-bottom:2rem;position:relative}
+        .subscriber-count{background:rgba(255,255,255,0.2);padding:0.5rem 1rem;border-radius:50px;display:inline-block;margin-bottom:1.5rem;font-size:0.875rem}
+        .newsletter-form{display:flex;gap:1rem;max-width:500px;margin:0 auto;position:relative}
+        .newsletter-input{flex:1;padding:1rem 1.5rem;border:none;border-radius:8px;font-size:1rem}
+        .newsletter-btn{padding:1rem 2rem;background:var(--text);color:var(--bg);border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.3s}
+        .newsletter-btn:hover{transform:translateY(-2px)}
+        footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:3rem 2rem 1rem;margin-top:4rem}
+        .footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-brand p{color:var(--text-secondary);margin-top:1rem}
+        .social-links{display:flex;gap:1rem;margin-top:1rem}
+        .social-links a{width:40px;height:40px;border-radius:50%;background:var(--bg-card);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);text-decoration:none;transition:all 0.3s;border:1px solid var(--border)}
+        .social-links a:hover{background:var(--primary);color:white}
+        .footer-links h4{font-weight:600;margin-bottom:1rem}
+        .footer-links ul{list-style:none}
+        .footer-links li{margin-bottom:0.5rem}
+        .footer-links a{color:var(--text-secondary);text-decoration:none}
+        .footer-links a:hover{color:var(--primary)}
+        .footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary);font-size:0.875rem}
+        .toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg-card);border:1px solid var(--border);padding:1rem 1.5rem;border-radius:var(--radius);box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:0.75rem;transform:translateX(400px);transition:transform 0.3s;z-index:9999}
+        .toast.show{transform:translateX(0)}
+        @media(max-width:768px){.nav-links{display:none}.mobile-menu-btn{display:block}.hero-grid{grid-template-columns:1fr;gap:2rem}.hero-content h1{font-size:2.5rem}.blog-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr}.newsletter-form{flex-direction:column}}
     </style>
 </head>
 <body>
-    <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-code"></i>
-                DevScope
-            </a>
-
+            <a href="#" class="logo"><i class="fas fa-code"></i>DevScope</a>
             <div class="nav-links">
                 <a href="#home">Ana Sayfa</a>
                 <a href="#articles">Yazılar</a>
                 <a href="#newsletter">Bülten</a>
             </div>
-
             <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="https://t.me/devscopenet" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <a href="https://t.me/devscopenet" class="btn btn-primary" target="_blank"><i class="fab fa-telegram"></i></a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-grid">
             <div class="hero-content">
                 <h1>Yazılım Dünyasının Kalbindesiniz</h1>
                 <p>AI araçları, modern web teknolojileri ve yazılım dünyasından güncel haberler.</p>
-
                 <div class="hero-buttons">
-                    <a href="#articles" class="btn btn-primary">
-                        Yazıları Keşfet
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#newsletter" class="btn btn-secondary">
-                        Abone Ol
-                    </a>
+                    <a href="#articles" class="btn btn-primary">Yazıları Keşfet<i class="fas fa-arrow-right"></i></a>
+                    <a href="#newsletter" class="btn btn-secondary">Abone Ol</a>
                 </div>
-
-                <!-- GERÇEKÇİ BAŞLANGIÇ MESAJI -->
                 <div class="hero-status">
                     <span class="status-badge">🌱 Yeni Başladık</span>
-                    <p class="status-text">
-                        İlk yazılarımızı yayınlıyoruz.
-                        <span class="status-highlight">İlk okuyucumuz siz olun!</span>
-                    </p>
+                    <p class="status-text">İlk yazılarımızı yayınlıyoruz.<span class="status-highlight">İlk okuyucumuz siz olun!</span></p>
                 </div>
             </div>
-
             <div class="hero-visual">
                 <div class="code-window">
-                    <div class="window-header">
-                        <div class="dot dot-red"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
-                    </div>
+                    <div class="window-header"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
                     <div class="code-content">
-                        <div class="code-line">
-                            <span class="line-number">1</span>
-                            <span><span class="code-keyword">const</span> devScope = {</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">2</span>
-                            <span>&nbsp;&nbsp;mission: <span class="code-string">'AI & Yazılım'</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">3</span>
-                            <span>&nbsp;&nbsp;content: [<span class="code-string">'News'</span>, <span class="code-string">'Tutorials'</span>],</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">4</span>
-                            <span>&nbsp;&nbsp;telegram: <span class="code-string">'@devscopenet'</span></span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">5</span>
-                            <span>}</span>
-                        </div>
+                        <div class="code-line"><span class="line-number">1</span><span><span class="code-keyword">const</span>devScope={</span></div>
+                        <div class="code-line"><span class="line-number">2</span><span>&nbsp;&nbsp;mission:<span class="code-string">'AI & Yazılım'</span>,</span></div>
+                        <div class="code-line"><span class="line-number">3</span><span>&nbsp;&nbsp;content:[<span class="code-string">'News'</span>,<span class="code-string">'Tutorials'</span>],</span></div>
+                        <div class="code-line"><span class="line-number">4</span><span>&nbsp;&nbsp;telegram:<span class="code-string">'@devscopenet'</span></span></div>
+                        <div class="code-line"><span class="line-number">5</span><span>}</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Search -->
     <section class="search-section">
-        <div class="search-box">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" id="searchInput" placeholder="Yazı ara...">
-        </div>
+        <div class="search-box"><i class="fas fa-search search-icon"></i><input type="text" class="search-input" id="searchInput" placeholder="Yazı ara..."></div>
     </section>
 
-    <!-- Filters -->
     <section class="filter-section">
         <div class="filter-tags" id="filterTags">
             <div class="tag active" data-filter="all">Tümü</div>
@@ -761,15 +157,11 @@
         </div>
     </section>
 
-    <!-- Blog Grid -->
     <section class="blog-section" id="articles">
-        <div class="section-header">
-            <h2 class="section-title">Son Yazılar</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title">Son Yazılar</h2></div>
         <div class="blog-grid" id="blogGrid"></div>
     </section>
 
-    <!-- Newsletter -->
     <section class="newsletter" id="newsletter">
         <span class="subscriber-count" id="subscriberCount">👋 İlk abonemiz siz olun!</span>
         <h2>Haftalık Teknoloji Bülteni</h2>
@@ -780,14 +172,10 @@
         </form>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <a href="#" class="logo">
-                    <i class="fas fa-code"></i>
-                    DevScope
-                </a>
+                <a href="#" class="logo"><i class="fas fa-code"></i>DevScope</a>
                 <p>Yazılım dünyasından güncel haberler ve AI araçları rehberi.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -795,91 +183,30 @@
                     <a href="#"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
-
-            <div class="footer-links">
-                <h4>İçerik</h4>
-                <ul>
-                    <li><a href="#">Yazılar</a></li>
-                    <li><a href="#">AI Araçları</a></li>
-                    <li><a href="#">Eğitimler</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>Kaynaklar</h4>
-                <ul>
-                    <li><a href="#">Hakkında</a></li>
-                    <li><a href="#">İletişim</a></li>
-                    <li><a href="#">RSS</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>Yasal</h4>
-                <ul>
-                    <li><a href="#">Gizlilik</a></li>
-                    <li><a href="#">Kullanım Koşulları</a></li>
-                </ul>
-            </div>
+            <div class="footer-links"><h4>İçerik</h4><ul><li><a href="#">Yazılar</a></li><li><a href="#">AI Araçları</a></li><li><a href="#">Eğitimler</a></li></ul></div>
+            <div class="footer-links"><h4>Kaynaklar</h4><ul><li><a href="#">Hakkında</a></li><li><a href="#">İletişim</a></li><li><a href="#">RSS</a></li></ul></div>
+            <div class="footer-links"><h4>Yasal</h4><ul><li><a href="#">Gizlilik</a></li><li><a href="#">Kullanım Koşulları</a></li></ul></div>
         </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 DevScope</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 DevScope</p></div>
     </footer>
 
-    <!-- Toast -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle" style="color: var(--primary);"></i>
-        <span id="toastMessage">Başarılı!</span>
-    </div>
+    <div class="toast" id="toast"><i class="fas fa-check-circle" style="color:var(--primary)"></i><span id="toastMessage">Başarılı!</span></div>
 
+    <!-- ÖNCE posts.js YÜKLENİYOR -->
+    <script src="posts.js"></script>
+
+    <!-- SONRA ANA KOD -->
     <script>
-        // GERÇEK VERİLER
-        const blogPosts = [
-            {
-                id: 1,
-                title: "Cursor vs Windsurf: AI Kod Editörü Karşılaştırması",
-                excerpt: "GitHub Copilot alternatiflerini detaylı inceledik.",
-                category: "ai",
-                categoryLabel: "Yapay Zeka",
-                date: "28 Mart 2025",
-                readTime: "8 dk",
-                gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)"
-            },
-            {
-                id: 2,
-                title: "Next.js 15 ile Server Components",
-                excerpt: "React Server Components nasıl çalışır?",
-                category: "web",
-                categoryLabel: "Web",
-                date: "25 Mart 2025",
-                readTime: "12 dk",
-                gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)"
-            },
-            {
-                id: 3,
-                title: "Flutter vs React Native 2025",
-                excerpt: "Cross-platform mobil geliştirme karşılaştırması.",
-                category: "mobile",
-                categoryLabel: "Mobil",
-                date: "22 Mart 2025",
-                readTime: "10 dk",
-                gradient: "linear-gradient(135deg, #ec4899, #f43f5e)"
-            }
-        ];
+        // blogPosts posts.js'den geliyor!
 
-        // GERÇEKÇİ METRİK SİSTEMİ
         const metrics = {
             subscribers: parseInt(localStorage.getItem('devscope_subscribers')) || 0,
-
             getSubscriberText() {
                 const count = this.subscribers;
                 if (count === 0) return "👋 İlk abonemiz siz olun!";
                 if (count < 10) return `🎉 ${count} abone - Büyüyoruz!`;
                 return `⭐ ${count}+ abone topluluğu`;
             },
-
             addSubscriber() {
                 this.subscribers++;
                 localStorage.setItem('devscope_subscribers', this.subscribers);
@@ -887,7 +214,6 @@
             }
         };
 
-        // DOM Elements
         const themeToggle = document.getElementById('themeToggle');
         const searchInput = document.getElementById('searchInput');
         const blogGrid = document.getElementById('blogGrid');
@@ -897,7 +223,6 @@
         const newsletterForm = document.getElementById('newsletterForm');
         const subscriberCount = document.getElementById('subscriberCount');
 
-        // Theme
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
         updateThemeIcon(currentTheme);
@@ -914,24 +239,15 @@
             themeToggle.querySelector('i').className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         }
 
-        // Render Posts
         function renderPosts(posts) {
             blogGrid.innerHTML = posts.map(post => `
                 <a href="#" class="blog-card" data-category="${post.category}">
-                    <div class="card-image" style="background: ${post.gradient};">
-                        <span class="card-category">${post.categoryLabel}</span>
-                    </div>
+                    <div class="card-image" style="background:${post.gradient}"><span class="card-category">${post.categoryLabel}</span></div>
                     <div class="card-content">
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar"></i> ${post.date}</span>
-                            <span><i class="far fa-clock"></i> ${post.readTime}</span>
-                        </div>
+                        <div class="card-meta"><span><i class="far fa-calendar"></i>${post.date}</span><span><i class="far fa-clock"></i>${post.readTime}</span></div>
                         <h3 class="card-title">${post.title}</h3>
                         <p class="card-excerpt">${post.excerpt}</p>
-                        <div class="card-footer">
-                            <span>Okuma süresi: ${post.readTime}</span>
-                            <span style="color: var(--primary); font-weight: 500;">Devamını Oku →</span>
-                        </div>
+                        <div class="card-footer"><span>Okuma süresi: ${post.readTime}</span><span style="color:var(--primary);font-weight:500">Devamını Oku →</span></div>
                     </div>
                 </a>
             `).join('');
@@ -939,43 +255,33 @@
 
         renderPosts(blogPosts);
 
-        // Filter
         filterTags.addEventListener('click', (e) => {
             if (e.target.classList.contains('tag')) {
                 document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
                 e.target.classList.add('active');
-
                 const filter = e.target.dataset.filter;
                 const filtered = filter === 'all' ? blogPosts : blogPosts.filter(p => p.category === filter);
                 renderPosts(filtered);
             }
         });
 
-        // Search
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const filtered = blogPosts.filter(p =>
-                p.title.toLowerCase().includes(term) ||
-                p.excerpt.toLowerCase().includes(term)
-            );
+            const filtered = blogPosts.filter(p => p.title.toLowerCase().includes(term) || p.excerpt.toLowerCase().includes(term));
             renderPosts(filtered);
         });
 
-        // Progress Bar
         window.addEventListener('scroll', () => {
             const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
             progressBar.style.width = (scrolled * 100) + '%';
         });
 
-        // Newsletter
         subscriberCount.textContent = metrics.getSubscriberText();
 
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const newCount = metrics.addSubscriber();
-
             showToast(newCount === 1 ? '🎉 Tebrikler! İlk abonemiz oldunuz!' : `🎉 ${newCount}. abonemiz oldunuz!`);
-
             subscriberCount.textContent = metrics.getSubscriberText();
             e.target.reset();
         });
@@ -986,7 +292,6 @@
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', (e) => {
                 e.preventDefault();
