@@ -43,7 +43,7 @@ const blogPosts = [
         date: "29 Mart 2025",
         readTime: "5 dk",
         gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)"
-    },   // ← Burada virgül YOK
+    }
     // YENİ YAZI EKLEMEK İÇİN:
     // 1. Buraya virgül koyun
     // 2. Yeni obje yapıştırın
